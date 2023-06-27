@@ -15,7 +15,7 @@ Feel free to seek help from other developers wherever possible.
 
 Include the script tag:
 ```html
-<script src="https://www.jsdelivr.com/package/npm/@ssofy/bootchameleon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ssofy/bootchameleon/dist/bootchameleon.min.js"></script>
 ```
 
 ## Usage
