@@ -10,7 +10,7 @@ export default class StylesheetModifier {
 
   setBackgroundColor(color) {
     StyleSheet.setGlobalStyle(this.selector, `
-      --bs-btn-bg: ${color};
+      --bs-btn-bg: ${color} !important;
       --bs-btn-disabled-bg: ${color};
     `);
 
@@ -47,9 +47,9 @@ export default class StylesheetModifier {
   setHoverEffect(color) {
     const selector = this.selector;
 
-    const hoverBgColor = new Color(color).darken(5).toString();
-    const borderColor = new Color(color).darken(15).toString();
-    const shadowRGB = new Color(color).darken(50).toRgbString();
+    const hoverBgColor = new Color(color).darken(10).toString();
+    const borderColor = new Color(color).darken(25).toString();
+    const shadowRGB = new Color(color).darken(75).toRgbString();
 
     const css = selector ? `${selector}:not([disabled]):not(.disabled):hover,
       ${selector}:not([disabled]):not(.disabled):focus,
@@ -75,25 +75,21 @@ export default class StylesheetModifier {
   }
 
   setColorAuto(color) {
-    const selector = this.selector;
-
     const isLight = new Color(color).isLight();
 
     const borderColor = new Color(color).darken(15).toString();
     const textColor = isLight ? 'black' : 'white';
 
-    this.setBackgroundColor(selector, color);
-    this.setTextColor(selector, textColor);
-    this.setBorderColor(selector, borderColor);
-    this.setHoverEffect(selector, color);
-    this.setHoverTextColor(selector, textColor);
+    this.setBackgroundColor(color);
+    this.setTextColor(textColor);
+    this.setBorderColor(borderColor);
+    this.setHoverEffect(color);
+    this.setHoverTextColor(textColor);
 
     return this;
   }
 
   setOutlineColorAuto(color, backgroundColor) {
-    const selector = this.selector;
-
     const isLight = new Color(color).isLight();
     const isLightBg = new Color(backgroundColor ?? '#ffffff').isLight();
 
@@ -101,9 +97,9 @@ export default class StylesheetModifier {
 
     const hoverTextColor = isLight ? 'black' : 'white';
 
-    this.setBorderColor(selector, borderColor);
-    this.setHoverEffect(selector, color);
-    this.setHoverTextColor(selector, hoverTextColor);
+    this.setBorderColor(borderColor);
+    this.setHoverEffect(color);
+    this.setHoverTextColor(hoverTextColor);
 
     let textColor = color;
 
@@ -111,7 +107,7 @@ export default class StylesheetModifier {
       textColor = 'black';
     }
 
-    this.setTextColor(selector, textColor);
+    this.setTextColor(textColor);
 
     return this;
   }

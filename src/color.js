@@ -9,6 +9,7 @@ export default class Color {
     const r = parseInt(hex.slice(0, 2), 16);
     const g = parseInt(hex.slice(2, 4), 16);
     const b = parseInt(hex.slice(4, 6), 16);
+
     return {r, g, b};
   }
 
@@ -18,11 +19,12 @@ export default class Color {
 
   darken(percent) {
     const ratio = (100 - percent) / 100;
+
     const r = Math.floor(this.rgb.r * ratio);
     const g = Math.floor(this.rgb.g * ratio);
     const b = Math.floor(this.rgb.b * ratio);
-    const darkenedColor = this.rgbToHex(r, g, b);
-    return new Color(darkenedColor);
+
+    return new Color(this.rgbToHex(r, g, b));
   }
 
   isLight() {
