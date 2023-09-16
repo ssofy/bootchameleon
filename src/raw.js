@@ -18,7 +18,7 @@ export default class Raw {
 
   setBorderColor(color) {
     StyleSheet.setGlobalStyle(this.selector, `
-      border-color: ${color};
+      border-color: ${color} !important;
     `);
 
     return this;
@@ -26,7 +26,7 @@ export default class Raw {
 
   setTextColor(color) {
     StyleSheet.setGlobalStyle(this.selector, `
-      color: ${color};
+      color: ${color} !important;
     `);
 
     return this;
