@@ -1,7 +1,7 @@
 import Color from './color';
 import StyleSheet from "./stylesheet";
 
-export default class StylesheetModifier {
+export default class Button {
   selector;
 
   constructor(selector) {
